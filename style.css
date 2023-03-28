@@ -1,0 +1,72 @@
+#totop {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  padding: 0px 0 15px 13px;
+  width: 50px;
+  height: 50px;
+  background-color: #185899;
+  border-radius: 50%;
+  font-size: 40px;
+  color: #fff;
+  z-index: 9999;
+  box-sizing: border-box;
+  opacity: 0;
+}
+
+#load {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 9999;
+  background: url("./images/loading.gif") no-repeat center center
+    rgba(0, 0, 0, 0.25);
+}
+
+.wrap {
+  max-width: 900px;
+  border: 2px solid blue;
+  margin: 20px;
+  padding: 20px;
+}
+
+.bookWrap {
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+  width: 200px;
+}
+
+.bookWrap img {
+  height: 200px;
+}
+
+#chatbot {
+  position: fixed;
+  bottom: 20px;
+  width: 200px;
+  height: 300px;
+  background-color: #299ce8;
+  padding: 5px 45px;
+  left: calc(100% - 45px);
+  overflow-y: auto;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+#form-chatbot {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#form-chatbot input {
+  align-self: flex-start;
+  margin: 5px;
+}
+
+.show {
+  left: calc(100% - 300px) !important;
+}

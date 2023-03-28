@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "category": "Redmi Series",
+    "price": "$300",
+    "stocked": true,
+    "name": "Redmi Note 12 Pro",
+    "author": "Xiaomi",
+    "imageCover": "https://cdek.shopping/storage/products/xiaomi-redmi-note-12-pro-plus-discovery-edition/pro-discovery-1.jpg",
+    "count": 1
+  },
+  {
+    "id": 2,
+    "category": "Redmi Series",
+    "price": "$250",
+    "stocked": true,
+    "name": "Redmi Note 11 Pro",
+    "author": "Unknown",
+    "imageCover": "https://c.ua/image/cache/catalog/VladimirGorchakov/XiaomiRedmiNote11Pro/blue/Xiaomi-Redmi-Note-11-Pro-0020_19761_1638124927-500x500.jpg",
+    "count": 1
+  },
+  {
+    "id": 3,
+    "category": "Redmi Series",
+    "price": "$200",
+    "stocked": false,
+    "name": "Redmi A2",
+    "author": "Unknown",
+    "imageCover": "https://content.rozetka.com.ua/goods/images/big/62532576.jpg",
+    "count": 1
+  }
+]

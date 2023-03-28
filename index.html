@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        let $j = jQuery.noConflict(true);
+
+        $j(document).ready(function () {
+            let offset = 200; // координата сдвига по оси Y
+            let duration = 300; // время выполнения
+            $j('#totop').fadeOut(0);
+            $j('a[href^="#"]:not([href="#demo"]').click(function () {
+                // если в href начинается с #, то обрабатываем клик
+                let scrollEl = $j(this).attr("href"); // возьмем содержимое атрибута href
+                if ($j(scrollEl).length != 0) {
+                    // проверим существование элемента чтобы избежать ошибки
+                    $j("html, body").animate({ scrollTop: $j(scrollEl).offset().top }, 500); // анимируем скроолинг к элементу scrollEl
+                }
+                return false; // выключаем стандартное действие
+            });
+
+            $j(window).scroll(function () {
+                if ($j(this).scrollTop() > offset) {
+                    $j('#totop').css("opacity", "0.8"); // возвращаем прозрачность
+                    $j('#totop').fadeIn(duration); // элемент плавно исчезает 
+                } else {
+                    $j('#totop').fadeOut(duration); // элемент плавно появляется
+                }
+
+                $j(".slideanim").each(function () { // для каждого блока с классом slideanim
+                    var pos = $j(this).offset().top; // считываем его координату по оси Y в окне браузера
+
+                    var winTop = $j(window).scrollTop(); // количество пикселей, на которые прокручено окно
+
+                    if (pos < winTop + 500) { //если до верха страницы остается 500px, 
+                        $j(this).addClass("slide"); //добавляем к блоку класс slide с анимацией
+                    }
+                });
+
+            });
+
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <!-- <style>
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+    </style> -->
+</head>
+
+<body id="myPage">
+    <div id="load"></div>
+    <div id="content">
+        <div class="container-fluid header p-0">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./index.html">Phone</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#category">Category</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#new">New</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">Contacts</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="jumbotron text-center parallax" id="active">
+                <h1>Xiaomi phones</h1>
+                <p>Top for your money!</p>
+            </div>
+        </div>
+        <div class="container slideanim" id="category">
+            <h2 class="text-center mt-5">Shop by Category</h2>
+            <div class="row my-5" id="link2">
+                <div class="col-sm-4">
+                    <div class="card mx-auto" style="width: 18rem">
+                        <img class="card-img-top p-5" src="./images/xiaomi.jpg" alt="Card image" style="width: 100%" />
+                        <div class="card-body">
+                            <h4 class="card-title">Xiaomi Series</h4>
+                            <p class="card-text">
+                                Represent flagships, the most expensive and coolest phones
+                            </p>
+                            <button class="btn btn-primary" id="load-xiaomi">Buy
+                                new phone</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card mx-auto" style="width: 18rem">
+                        <img class="card-img-top p-5" src="./images/redmi.png" alt="Card image" style="width: 100%;" />
+                        <div class="card-body">
+                            <h4 class="card-title">Redmi Series</h4>
+                            <p class="card-text">
+                                State employees and ultra-budget phones of the middle class
+                            </p>
+                            <button class="btn btn-primary" id="load-redmi">Buy
+                                new phone</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card mx-auto" style="width: 18rem">
+                        <img class="card-img-top p-5" src="./images/poco.webp" alt="Card image" style="width: 100%" />
+                        <div class="card-body">
+                            <h4 class="card-title">POCO</h4>
+                            <p class="card-text">
+                                Represents flagships, only less expensive and cool than Xiaomi
+                            </p>
+                            <button class="btn btn-primary" id="load-poco">Buy
+                                new phone</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div id="books"></div>
+        </div>
+        <div class="container" id="new">
+            <h2 class="text-center mt-5 mb-3">New</h2>
+            <div id="demo" class="carousel slide" data-ride="carousel">
+                <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                    <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./images/xiaomi13.webp" alt="Xiaomi 13" width="1100" height="500" />
+                        <div class="carousel-caption">
+                            <h3 style="color:black;">Xiaomi 13</h3>
+                            <p style="color:black;">Behind the masterpiece</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/redmi12.webp" alt="Redmi Note 12 Pro 5G" width="1100" height="500" />
+                        <div class="carousel-caption">
+                            <h3 style="color:black;">Redmi Note 12 Pro 5G</h3>
+                            <p style="color:black;">Vivid life, vivid vision</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/pocox5.webp" alt="POCO X5 Pro 5G" width="1100" height="500" />
+                        <div class="carousel-caption">
+                            <h3>POCO X5 Pro 5G</h3>
+                            <p>The secret to win</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+        <div class="container-fluid footer p-0" id="contacts">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h3 class="pb-3 pt-5">Contacts</h3>
+
+                    <div id="googleMap">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195539.57373260194!2d116.08249581138153!3d40.02395056441476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35f05137c865ad63%3A0xd348af83c67dc389!2zSGFpZGlhbiBEaXN0cmljdCwg0J_QtdC60ZbQvSwg0JrQuNGC0LDQuQ!5e0!3m2!1suk!2sua!4v1679600151437!5m2!1suk!2sua"
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <h4 class="pt-3">2023</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="container text-center">
+                        <div class="social-likes p-2">
+                            <a href="https://www.mi.com/global/" target="_blank" class="px-1"><img
+                                    src="./images/logo-xiaomi.png" alt="" width="50"></a>
+                            <a href="https://www.po.co/global/" target="_blank" class="px-1"><img
+                                    src="./images/logo-poco.png" alt="" width="70"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#myPage" title="To Top" id="totop" class="fade">&uArr;</a>
+    </div>
+    <div id="chatbot">
+        <form action="" id="form-chatbot">
+            <div id="answers"></div>
+            <input type="text" id="question">
+            <input type="button" value="Send" id="ok">
+        </form>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "category": "POCO Series",
+    "price": "$430",
+    "stocked": false,
+    "name": "POCO F4",
+    "author": "Unknown",
+    "imageCover": "https://sota.kh.ua/image/cache/data/Xiaomi-2/poco-f4-grn-01-700x700.webp",
+    "count": 1
+  },
+  {
+    "id": 2,
+    "category": "POCO Series",
+    "price": "$380",
+    "stocked": true,
+    "name": "POCO Х5",
+    "author": "POCO Community",
+    "imageCover": "https://mobilike.net.ua/image/cache/catalog/easyphoto/2764/poco-x5-5g-6-128gb-blue-ua-1-860x860.jpg",
+    "count": 1
+  },
+  {
+    "id": 3,
+    "category": "POCO Series",
+    "price": "$200",
+    "stocked": true,
+    "name": "POCO М5",
+    "author": "Xiaomi",
+    "imageCover": "https://sota.kh.ua/image/cache/data/Xiaomi-2/poco-m5-yel-01-700x700.webp",
+    "count": 1
+  }
+]

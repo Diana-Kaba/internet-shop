@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "category": "Xiaomi Series",
+    "price": "$1000",
+    "stocked": true,
+    "name": "Xiaomi 13 Pro",
+    "author": "Lei Jun",
+    "imageCover": "https://files.foxtrot.com.ua/PhotoNew/6862517_2_638126618313863572.jpg",
+    "count": 1
+  },
+  {
+    "id": 2,
+    "category": "Xiaomi Series",
+    "price": "$600",
+    "stocked": false,
+    "name": "Xiaomi 11T Pro",
+    "author": "Unknown",
+    "imageCover": "https://itmag.ua/upload/iblock/ab1/og3eejelzjxkw8kfw4f6avp2r1otbuhi/560sss.jpg",
+    "count": 1
+  },
+  {
+    "id": 3,
+    "category": "Xiaomi Series",
+    "price": "$800",
+    "stocked": true,
+    "name": "Xiaomi 12T Pro",
+    "author": "Lei Jun",
+    "imageCover": "https://i.citrus.world/imgcache/size_800/uploads/shop/7/f/7fe85f689cb4893de587ae79fb67a4e4.jpg",
+    "count": 1
+  }
+]

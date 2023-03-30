@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Online store</title>
+    <link rel="shortcut icon" href="./images/logo-xiaomi.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/e10ceecb8e.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script>
         let $j = jQuery.noConflict(true);
@@ -82,7 +84,7 @@
 
             <div class="jumbotron text-center parallax" id="active">
                 <h1>Xiaomi phones</h1>
-                <p>Top for your money!</p>
+                <p id="block"></p>
             </div>
         </div>
         <div class="container slideanim" id="category">
@@ -171,6 +173,16 @@
                 </a>
             </div>
         </div>
+        <img src="./images/scroll1.webp" alt="" id="din" class="hide">
+        <div class="jumbotron container text-center mt-5" id="guess">
+            <h2 class="text-center mt-5 mb-3">Guess the word to get 10% discount</h2>
+            <div id="answ">
+            </div>
+            <div id="count"></div>
+            <div id="remain"></div>
+            <br />
+            <button id="guess">guess</button>
+        </div>
         <div class="container-fluid footer p-0" id="contacts">
             <div class="row">
                 <div class="col-sm-12 text-center">
@@ -198,7 +210,9 @@
                 </div>
             </div>
         </div>
-        <a href="#myPage" title="To Top" id="totop" class="fade">&uArr;</a>
+        <a href="#myPage" title="To Top" id="totop" class="fade">
+            <i class="fa-solid fa-arrow-up"></i>
+        </a>
     </div>
     <div id="chatbot">
         <form action="" id="form-chatbot">

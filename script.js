@@ -1,4 +1,20 @@
+let imgDin = document.getElementById("din");
+
 window.onload = function () {
+  if (document.documentElement.scrollTop > 200) {
+    if (imgDin.classList.contains("hide")) imgDin.classList.remove("hide");
+  }
+  if (document.documentElement.scrollTop < 300) {
+    imgDin.src = "./images/scroll1.webp";
+  }
+  if (document.documentElement.scrollTop > 300) {
+    imgDin.src = "./images/scroll2.jpg";
+  }
+  if (document.documentElement.scrollTop > 600) {
+    imgDin.src = "./images/scroll3.webp";
+
+  }
+
   let menu = document.getElementById("menu");
   let menuBottom = 100; // пограничное значения отступа от верхнего края при прокрутке
   let arrow = document.getElementById("up");
@@ -27,6 +43,71 @@ window.onload = function () {
       document.getElementById("contents").style.visibility = "visible";
     }, 2000);
   }
+
+  let word = "innovation";
+  let count = 0;
+  let remain;
+  let answer = []; // що відкрито
+  const countElement = document.getElementById("count");
+  let remainElement = document.getElementById("remain");
+
+  function init() {
+    answer[0] = word[0]; // перша літера буде відкрита
+    answer[word.length - 1] = word[word.length - 1]; // остання літера буде відкрита
+    remain = word.length + 0;
+
+    for (let i = 1; i < word.length - 1; i++) {
+      answer[i] = "_"; // між першою та останньою літерою - знаки підкреслення
+    }
+
+    console.log(answer);
+    console.log(answer.join(" "));
+    let answ = document.getElementById("answ");
+    answ.innerHTML = answer.join(" ");
+  }
+  function check() {
+    let guess = prompt("Enter a letter:");
+
+    for (let i = 0; i < word.length; i++) {
+      // проходимо рядок word поелементно, як масив
+      if (word[i] === guess) {
+        // якщо літера рядка збіглася з вгаданою
+        answer[i] = guess; // записуємо її до масиву відкритих букв
+        remain--; // зменшуємо на 1 кількість спроб, що залишилися.
+        remainElement.innerHTML = "Remains " + remain + " attempts";
+      }
+    }
+    count++;
+    countElement.innerHTML = `It was ${count} attempts`;
+    answ.innerHTML = answer.join(" ");
+    if (count == 6) {
+      alert("You got a discount!");
+    } else if (count > 6) {
+      alert("You lost :(");
+    }
+  }
+
+  const guessButton = document.getElementById("guess");
+  guessButton.addEventListener("click", check);
+
+  init();
+
+  function addText(text) {
+    let elem = document.getElementById("block");
+    let timer;
+    let pos = 0;
+
+    function addLetter() {
+      pos++;
+      elem.innerHTML = text.substring(0, pos);
+      if (pos == text.length) {
+        clearInterval(timer);
+      }
+    }
+    timer = setInterval(addLetter, 500);
+  }
+
+  addText("Top for your money!");
 };
 
 function loadXiaomi() {
@@ -85,8 +166,11 @@ function insertBooks(books) {
     str += `<h2>${books[i].name}</h2>`;
     str += `<p>${books[i].author}</p>`;
     str += `</div>`;
+    str += `<button class="btn btn-primary add_item" data-id="3">Add to Basket</button>`;
   }
+  str += `<br> <button class="btn btn-primary" id="checkout">Checkout</button>`;
   str += `</div>`;
+  // str += `<div id="cart_content"></div></div>`;
   document.getElementById("books").innerHTML = str;
 }
 
@@ -101,14 +185,14 @@ poco.addEventListener("click", loadPoco);
 
 $(function () {
   const phrases = [
-    "Наш менеджер перезвонит Вам в ближайшее время!",
-    "Уточнить детали можно по телефону 123456789",
-    "Оставайтесь на связи!",
-    "Сегодня прекрасная погода!",
-    "С Вами очень приятно общаться!",
+    "Our manager will call you back as soon as possible!",
+    "For details, please call 123456789",
+    "Stay in touch!",
+    "Today is beautiful weather!",
+    "It is very pleasant to communicate with you!",
   ];
-  const hello = "Привет!";
-  const bye = "Пока, было приятно пообщаться!";
+  const hello = "Hello!";
+  const bye = "So far, it was nice talking to you!";
 
   $("#chatbot").click(function () {
     $(this).toggleClass("show");
@@ -127,11 +211,14 @@ $(function () {
       $("#answers").append(`<div class="hum-answ">${q}</div>`);
 
       setTimeout(function () {
-        if (q.toLowerCase().includes("привет")) {
+        if (
+          q.toLowerCase().includes("hi") ||
+          q.toLowerCase().includes("hello")
+        ) {
           $("#answers").append(`<div class="bot-answ">${hello}</div>`);
         } else if (
-          q.toLowerCase().includes("пока") ||
-          q.toLowerCase().includes("до свидания")
+          q.toLowerCase().includes("bye") ||
+          q.toLowerCase().includes("goodbye")
         ) {
           $("#answers").append(`<div class="bot-answ">${bye}</div>`);
         } else {
@@ -163,5 +250,3 @@ $(function () {
 
   $("#question").keypress("keyup", enterKey);
 });
-
-

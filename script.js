@@ -1,19 +1,19 @@
-let imgDin = document.getElementById("din");
+// let imgDin = document.getElementById("din");
 
 window.onload = function () {
-  if (document.documentElement.scrollTop > 200) {
-    if (imgDin.classList.contains("hide")) imgDin.classList.remove("hide");
-  }
-  if (document.documentElement.scrollTop < 300) {
-    imgDin.src = "./images/scroll1.webp";
-  }
-  if (document.documentElement.scrollTop > 300) {
-    imgDin.src = "./images/scroll2.jpg";
-  }
-  if (document.documentElement.scrollTop > 600) {
-    imgDin.src = "./images/scroll3.webp";
+  // if (document.documentElement.scrollTop > 200) {
+  //   if (imgDin.classList.contains("hide")) imgDin.classList.remove("hide");
+  // }
+  // if (document.documentElement.scrollTop < 300) {
+  //   imgDin.src = "./images/scroll1.webp";
+  // }
+  // if (document.documentElement.scrollTop > 300) {
+  //   imgDin.src = "./images/scroll2.jpg";
+  // }
+  // if (document.documentElement.scrollTop > 600) {
+  //   imgDin.src = "./images/scroll3.webp";
 
-  }
+  // }
 
   let menu = document.getElementById("menu");
   let menuBottom = 100; // пограничное значения отступа от верхнего края при прокрутке
@@ -166,9 +166,9 @@ function insertBooks(books) {
     str += `<h2>${books[i].name}</h2>`;
     str += `<p>${books[i].author}</p>`;
     str += `</div>`;
-    str += `<button class="btn btn-primary add_item" data-id="3">Add to Basket</button>`;
+    // str += `<button class="btn btn-primary add_item" data-id="3">Add to Basket</button>`;
   }
-  str += `<br> <button class="btn btn-primary" id="checkout">Checkout</button>`;
+  // str += `<br> <button class="btn btn-primary" id="checkout">Checkout</button>`;
   str += `</div>`;
   // str += `<div id="cart_content"></div></div>`;
   document.getElementById("books").innerHTML = str;
@@ -249,4 +249,14 @@ $(function () {
   }
 
   $("#question").keypress("keyup", enterKey);
+});
+
+$(document).ready(function () {
+  $(window).scroll(function () {
+    let winTop = $(window).scrollTop();
+    $(".parallax").css(
+      "background-position",
+      "120px " + (500 - winTop * 2) + "px," + (400 - winTop * 0.5) + "px"
+    );
+  });
 });

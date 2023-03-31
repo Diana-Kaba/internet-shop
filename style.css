@@ -69,6 +69,26 @@ html {
 #form-chatbot input {
   align-self: flex-start;
   margin: 5px;
+  border-radius: 10px;
+  border: none;
+}
+
+.bot-answ {
+  align-self: flex-end;
+  margin: 5px;
+  max-width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #d0e7ff;
+}
+
+.hum-answ {
+  align-self: flex-end;
+  margin: 5px;
+  max-width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
 .show {
@@ -88,4 +108,18 @@ html {
   left: 20px;
   bottom: 40px;
   transition: all 0.5s;
+}
+
+.parallax {
+  background-image: url(images/rabbit1.webp), url(images/rabbit2.webp);
+  background-position: 80px 500px, 220px 400px;
+  background-attachment: fixed, fixed;
+  background-size: 100px 100px, 350px 350px;
+  background-repeat: no-repeat, no-repeat;
+  color: #ffffff;
+  padding: 150px;
+}
+
+#hero, #block {
+  color: black;
 }

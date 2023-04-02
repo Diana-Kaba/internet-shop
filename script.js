@@ -49,6 +49,7 @@ window.onload = function () {
   let remain;
   let answer = []; // що відкрито
   const countElement = document.getElementById("count");
+  const button = document.getElementById("guess-btn");
   let remainElement = document.getElementById("remain");
 
   function init() {
@@ -80,15 +81,19 @@ window.onload = function () {
     count++;
     countElement.innerHTML = `It was ${count} attempts`;
     answ.innerHTML = answer.join(" ");
-    if (count == 6) {
-      alert("You got a discount!");
-    } else if (count > 6) {
+    for (let i = 0; i < word.length; i++) {
+      if (count == 6 && word === guess) {
+        alert("You got a discount!");
+        button.disabled = true;
+      }
+    }
+    if (count > 6) {
       alert("You lost :(");
+      button.disabled = true;
     }
   }
 
-  const guessButton = document.getElementById("guess");
-  guessButton.addEventListener("click", check);
+  button.addEventListener("click", check);
 
   init();
 
@@ -186,13 +191,30 @@ poco.addEventListener("click", loadPoco);
 $(function () {
   const phrases = [
     "Our manager will call you back as soon as possible!",
-    "For details, please call 123456789",
+    "For details, please call 123456789.",
     "Stay in touch!",
     "Today is beautiful weather!",
     "It is very pleasant to communicate with you!",
   ];
   const hello = "Hello!";
   const bye = "So far, it was nice talking to you!";
+  const xiaomi = [
+    "Xiaomi's latest flagship phone has a stunning display and amazing camera features!",
+    "Xiaomi's latest phone is the Mi 13, have you checked it out?",
+    "Xiaomi's MIUI interface is highly customizable and user-friendly.",
+    "Xiaomi offers a wide range of accessories to complement your phone, including cases, headphones, and power banks.",
+    "Xiaomi's phones come in a variety of sizes and colors, so you can find the perfect one to match your style.",
+  ];
+  const redmi = [
+    "The Redmi Note 12 has just been released, it's a great budget phone!",
+    "Redmi's budget-friendly phones offer great value for money and impressive specs.",
+    "The Redmi Note series is one of the most popular smartphone lines in the world.",
+  ];
+  const poco = [
+    "Looking for a phone with a long battery life? Poco's got you covered.",
+    "Poco's F series phones are perfect for gamers with their powerful processors and high refresh rate displays.",
+    "Poco's phones offer fast charging capabilities, so you can quickly power up your phone on the go.",
+  ];
 
   $("#chatbot").click(function () {
     $(this).toggleClass("show");
@@ -221,6 +243,15 @@ $(function () {
           q.toLowerCase().includes("goodbye")
         ) {
           $("#answers").append(`<div class="bot-answ">${bye}</div>`);
+        } else if (q.toLowerCase().includes("xiaomi")) {
+          const miAnsw = xiaomi[Math.floor(Math.random() * xiaomi.length)];
+          $("#answers").append(`<div class="bot-answ">${miAnsw}</div>`);
+        } else if (q.toLowerCase().includes("redmi")) {
+          const redmiAnsw = redmi[Math.floor(Math.random() * redmi.length)];
+          $("#answers").append(`<div class="bot-answ">${redmiAnsw}</div>`);
+        } else if (q.toLowerCase().includes("poco")) {
+          const pocoAnsw = poco[Math.floor(Math.random() * poco.length)];
+          $("#answers").append(`<div class="bot-answ">${pocoAnsw}</div>`);
         } else {
           const random = Math.floor(Math.random() * phrases.length);
           const phrase = phrases[random];

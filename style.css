@@ -120,6 +120,15 @@ html {
   padding: 150px;
 }
 
-#hero, #block {
+#hero,
+#block {
   color: black;
+}
+
+#block {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: orange;
 }

@@ -151,7 +151,7 @@ function insertBooks(books) {
     str += `<div class="bookWrap">`;
     str += `<div class="image"><img src="${books[i].imageCover}" /></div>`;
     str += `<h2>${books[i].name}</h2>`;
-    str += `<p>${books[i].author}</p>`;
+    str += `<p>${books[i].price}</p>`;
     str += `</div>`;
   }
   str += `</div>`;

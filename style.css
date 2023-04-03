@@ -112,7 +112,7 @@ html {
 
 .parallax {
   background-image: url(images/rabbit1.webp), url(images/rabbit2.webp);
-  background-position: 80px 500px, 220px 400px;
+  background-position: 80px 500px, 200px center;
   background-attachment: fixed, fixed;
   background-size: 100px 100px, 350px 350px;
   background-repeat: no-repeat, no-repeat;

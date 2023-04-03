@@ -287,7 +287,7 @@ $(document).ready(function () {
     let winTop = $(window).scrollTop();
     $(".parallax").css(
       "background-position",
-      "120px " + (500 - winTop * 2) + "px," + (400 - winTop * 0.5) + "px"
+      "80px " + (500 - winTop * 2) + "px, " + (200 - winTop * 0.5) + "px"
     );
   });
 });

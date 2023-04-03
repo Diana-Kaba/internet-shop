@@ -14,34 +14,32 @@
         let $j = jQuery.noConflict(true);
 
         $j(document).ready(function () {
-            let offset = 200; // координата сдвига по оси Y
-            let duration = 300; // время выполнения
+            let offset = 200;
+            let duration = 300;
             $j('#totop').fadeOut(0);
             $j('a[href^="#"]:not([href="#demo"]').click(function () {
-                // если в href начинается с #, то обрабатываем клик
-                let scrollEl = $j(this).attr("href"); // возьмем содержимое атрибута href
+                let scrollEl = $j(this).attr("href");
                 if ($j(scrollEl).length != 0) {
-                    // проверим существование элемента чтобы избежать ошибки
-                    $j("html, body").animate({ scrollTop: $j(scrollEl).offset().top }, 500); // анимируем скроолинг к элементу scrollEl
+                    $j("html, body").animate({ scrollTop: $j(scrollEl).offset().top }, 500);
                 }
-                return false; // выключаем стандартное действие
+                return false;
             });
 
             $j(window).scroll(function () {
                 if ($j(this).scrollTop() > offset) {
-                    $j('#totop').css("opacity", "0.8"); // возвращаем прозрачность
-                    $j('#totop').fadeIn(duration); // элемент плавно исчезает 
+                    $j('#totop').css("opacity", "0.8");
+                    $j('#totop').fadeIn(duration);
                 } else {
-                    $j('#totop').fadeOut(duration); // элемент плавно появляется
+                    $j('#totop').fadeOut(duration);
                 }
 
-                $j(".slideanim").each(function () { // для каждого блока с классом slideanim
-                    var pos = $j(this).offset().top; // считываем его координату по оси Y в окне браузера
+                $j(".slideanim").each(function () {
+                    var pos = $j(this).offset().top;
 
-                    var winTop = $j(window).scrollTop(); // количество пикселей, на которые прокручено окно
+                    var winTop = $j(window).scrollTop();
 
-                    if (pos < winTop + 500) { //если до верха страницы остается 500px, 
-                        $j(this).addClass("slide"); //добавляем к блоку класс slide с анимацией
+                    if (pos < winTop + 500) {
+                        $j(this).addClass("slide");
                     }
                 });
 
@@ -53,12 +51,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <!-- <style>
-        .carousel-inner img {
-            width: 100%;
-            height: 100%;
-        }
-    </style> -->
 </head>
 
 <body id="myPage">
@@ -179,9 +171,6 @@
             <br />
             <button id="guess-btn">guess</button>
         </div>
-        <!-- <div>
-            <img src="./images/scroll1.webp" alt="" id="din" class="hide">
-        </div> -->
         <div class="container-fluid footer p-0" id="contacts">
             <div class="row">
                 <div class="col-sm-12 text-center">

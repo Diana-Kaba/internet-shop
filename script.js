@@ -1,31 +1,8 @@
-// let imgDin = document.getElementById("din");
-
 window.onload = function () {
-  // if (document.documentElement.scrollTop > 200) {
-  //   if (imgDin.classList.contains("hide")) imgDin.classList.remove("hide");
-  // }
-  // if (document.documentElement.scrollTop < 300) {
-  //   imgDin.src = "./images/scroll1.webp";
-  // }
-  // if (document.documentElement.scrollTop > 300) {
-  //   imgDin.src = "./images/scroll2.jpg";
-  // }
-  // if (document.documentElement.scrollTop > 600) {
-  //   imgDin.src = "./images/scroll3.webp";
-
-  // }
-
-  let menu = document.getElementById("menu");
-  let menuBottom = 100; // пограничное значения отступа от верхнего края при прокрутке
-  let arrow = document.getElementById("up");
+  let menu = document.getElementById("navbar-nav");
+  let menuBottom = 100;
+  let arrow = document.getElementById("totop");
   window.onscroll = function () {
-    if (document.documentElement.scrollTop < menuBottom) {
-      // или document.body.scrollTop > menuBottom
-      menu.classList.remove("fixed"); // удаляем класс 'fixed'
-    } else {
-      menu.classList.add("fixed"); // добавляем класс 'fixed'
-    }
-
     if (document.documentElement.scrollTop < menuBottom) {
       arrow.classList.add("fade");
     } else {
@@ -36,59 +13,64 @@ window.onload = function () {
   let state = document.readyState;
   document.getElementById("load").style.visibility = "hidden";
   if (state == "interactive") {
-    document.getElementById("contents").style.visibility = "hidden";
+    document.getElementById("content").style.visibility = "hidden";
   } else if (state == "complete") {
     setTimeout(function () {
       document.getElementById("load").style.visibility = "hidden";
-      document.getElementById("contents").style.visibility = "visible";
+      document.getElementById("content").style.visibility = "visible";
     }, 2000);
   }
 
-  let word = "innovation";
   let count = 0;
   let remain;
-  let answer = []; // що відкрито
+  let answer = [];
   const countElement = document.getElementById("count");
   const button = document.getElementById("guess-btn");
   let remainElement = document.getElementById("remain");
+  let words = [
+    "affordable",
+    "innovation",
+    "powerful",
+    "unbeatable",
+    "features",
+    "flagship",
+    "future",
+  ];
+  let randomWord = words[Math.floor(Math.random() * words.length)];
 
   function init() {
-    answer[0] = word[0]; // перша літера буде відкрита
-    answer[word.length - 1] = word[word.length - 1]; // остання літера буде відкрита
-    remain = word.length + 0;
+    answer[0] = randomWord[0];
+    answer[randomWord.length - 1] = randomWord[randomWord.length - 1];
+    remain = randomWord.length + 0;
 
-    for (let i = 1; i < word.length - 1; i++) {
-      answer[i] = "_"; // між першою та останньою літерою - знаки підкреслення
+    for (let i = 1; i < randomWord.length - 1; i++) {
+      answer[i] = "_";
     }
 
-    console.log(answer);
-    console.log(answer.join(" "));
     let answ = document.getElementById("answ");
     answ.innerHTML = answer.join(" ");
   }
+
   function check() {
     let guess = prompt("Enter a letter:");
 
-    for (let i = 0; i < word.length; i++) {
-      // проходимо рядок word поелементно, як масив
-      if (word[i] === guess) {
-        // якщо літера рядка збіглася з вгаданою
-        answer[i] = guess; // записуємо її до масиву відкритих букв
-        remain--; // зменшуємо на 1 кількість спроб, що залишилися.
+    let correctGuess = false;
+    for (let i = 0; i < randomWord.length; i++) {
+      if (randomWord[i] === guess) {
+        answer[i] = guess;
+        remain--;
         remainElement.innerHTML = "Remains " + remain + " attempts";
+        correctGuess = true;
       }
     }
     count++;
     countElement.innerHTML = `It was ${count} attempts`;
     answ.innerHTML = answer.join(" ");
-    for (let i = 0; i < word.length; i++) {
-      if (count == 6 && word === guess) {
-        alert("You got a discount!");
-        button.disabled = true;
-      }
-    }
-    if (count > 6) {
-      alert("You lost :(");
+    if (answer.join("") === randomWord) {
+      remainElement.innerHTML = "You got a discount!";
+      button.disabled = true;
+    } else if (count >= randomWord.length) {
+      remainElement.innerHTML = "You lost :(";
       button.disabled = true;
     }
   }
@@ -171,11 +153,8 @@ function insertBooks(books) {
     str += `<h2>${books[i].name}</h2>`;
     str += `<p>${books[i].author}</p>`;
     str += `</div>`;
-    // str += `<button class="btn btn-primary add_item" data-id="3">Add to Basket</button>`;
   }
-  // str += `<br> <button class="btn btn-primary" id="checkout">Checkout</button>`;
   str += `</div>`;
-  // str += `<div id="cart_content"></div></div>`;
   document.getElementById("books").innerHTML = str;
 }
 
@@ -223,7 +202,7 @@ $(function () {
   $("#answers").append(`<div class="bot-answ">${hello}</div>`);
 
   $("#answers").click(function () {
-    return false; // preventDefault() and stopPropagation()
+    return false;
   });
 
   $("#ok").click(function () {

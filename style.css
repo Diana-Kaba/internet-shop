@@ -110,7 +110,7 @@ html {
   transition: all 0.5s;
 }
 
-.parallax {
+#particles-js {
   background-image: url(images/rabbit1.webp), url(images/rabbit2.webp);
   background-position: 80px 500px, 200px center;
   background-attachment: fixed, fixed;

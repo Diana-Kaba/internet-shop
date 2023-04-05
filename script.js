@@ -97,6 +97,8 @@ window.onload = function () {
   addText("Top for your money!");
 };
 
+particlesJS.load("particles-js", "./particles/particles.json");
+
 function loadXiaomi() {
   let xhttp = new XMLHttpRequest();
   xhttp.open("GET", "xiaomi.json", true);
@@ -264,7 +266,7 @@ $(function () {
 $(document).ready(function () {
   $(window).scroll(function () {
     let winTop = $(window).scrollTop();
-    $(".parallax").css(
+    $("#particles-js").css(
       "background-position",
       "80px " + (500 - winTop * 2) + "px, " + (200 - winTop * 0.5) + "px"
     );
